@@ -7,7 +7,7 @@ module.exports = {
     insert,
     getById,
     getStudentsByCohortId,
-    // remove,
+    remove,
     update,
 }
 
@@ -30,7 +30,11 @@ function getStudentsByCohortId(id) {
 }
 
 function update(id, name) {
-    console.log(id, name)
     return db('cohorts').where({id})
     .update(name)
+}
+
+function remove(id) {
+    return db('cohorts').where({id})
+    .del()
 }

@@ -70,4 +70,15 @@ router.put('/:id', (req, res) => {
     }
 })
 
+router.delete('/:id', (req, res) => {
+    Cohorts.remove(req.params.id)
+    .then(response => {
+        res.status(200).json(response)
+    })
+    .catch(error => {
+        console.log(error)
+        res.status(500).json("Server Error")
+    }) 
+})
+
 module.exports = router;
