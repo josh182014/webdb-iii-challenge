@@ -8,7 +8,7 @@ module.exports = {
     getById,
     getStudentsByCohortId,
     // remove,
-    // update,
+    update,
 }
 
 function find() {
@@ -27,4 +27,10 @@ function getById(id) {
 
 function getStudentsByCohortId(id) {
     return db('students').where({cohort_id: id })
+}
+
+function update(id, name) {
+    console.log(id, name)
+    return db('cohorts').where({id})
+    .update(name)
 }

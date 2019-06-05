@@ -54,4 +54,20 @@ router.get('/:id/students', (req, res) => {
     }) 
 })
 
+router.put('/:id', (req, res) => {
+    if(req.body.name) {
+        Cohorts.update(req.params.id, req.body)
+        .then(response => {
+            res.status(201).json(response)
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({message: "Server Error", err: error})
+        })
+    }
+    else {
+        res.status(400).json("Please provide a cohort name.")
+    }
+})
+
 module.exports = router;
